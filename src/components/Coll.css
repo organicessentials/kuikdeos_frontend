@@ -1,0 +1,74 @@
+.collectin_seci {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 47px;
+  width: 100%;
+  margin: 47px 0 0 0;
+}
+
+.collect_sec {
+  height: 238px;
+  display: flex;
+  width: 30%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
+  padding: 24px;
+  margin: 25px 0;
+  border-radius: 21px;
+}
+.collect_sec h2 {
+  font-size: 27px;
+  color: #2d3f59;
+}
+span.span_coll {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 24px;
+  color: #41bae3;
+  text-transform: uppercase;
+}
+.collect_sec.colle_1 h2 {
+  color: #17414f;
+  text-transform: capitalize;
+  font-size: 48px;
+}
+span.spn_de {
+  color: #535353;
+}
+.colle_2 {
+  background: url(/src/assets/acne.png);
+  background-size: 95%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #e2f5fb;
+}
+.colle_3 {
+  background: url(/src/assets/skin.png);
+  background-size: 95%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #e2f5fb;
+}
+.colle_4 {
+  background: url(/src/assets/pain.png);
+  background-size: 95%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #e2f5fb;
+}
+.colle_5 {
+  background: url(/src/assets/WAIGHT.png);
+  background-size: 95%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #e2f5fb;
+}
+.colle_6 {
+  background: url(/src/assets/ed-3.png);
+  background-size: 95%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #e2f5fb;
+}

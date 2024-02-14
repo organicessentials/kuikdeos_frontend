@@ -1,0 +1,135 @@
+.container_banner {
+    width: 1246px;
+    margin: 0 auto;
+}
+.banner_kd {
+    background: #e2f5fb;
+    padding: 0 0 305px 0;
+}
+.banner_kd h2 {
+    color: rgb(65, 186, 227);
+    text-align: center;
+    letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 155px;
+}
+
+.columns_banner {
+    width: 100%;
+    display: flex;
+    column-gap: 36px;
+}
+
+.cloumn_flex {
+    width: 33%;
+}
+
+.content_ban span {
+    color: rgb(114, 114, 114);
+    line-height: 25px;
+    font-weight: 400;
+    font-size: 26px;
+}
+.content_ban h3 {
+    color: rgb(23, 65, 79);
+    line-height: 40px;
+    font-weight: 500;
+    font-size: 34px;
+    margin: 4px 0 13px;
+}
+.product_sect_ban {
+    width: 100%;
+    float: left;
+    display: flex;
+}
+a.shop_bann {
+    color: #fff;
+    background: #17414f;
+    box-shadow: 0px 8px 10px rgba(121, 99, 104, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12);
+    transition: all .3s ease-in-out;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 30px;
+    padding: 14px 45px;
+    float: left;
+}
+.product_sect_ban {
+    width: 100%;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 0;
+}
+.cloumn_flex.content_image {
+background: url(../assets/h2-s11.png);
+}
+.prodct_img {
+    width: 27%;
+    float: left;
+}
+
+.pr_names {
+    width: 93%;
+}
+.pr_names h4 a {
+    color: #17414f;
+    text-align: left;
+    line-height: 36px;
+    letter-spacing: 0px;
+    font-weight: 600;
+    font-size: 26px;
+}
+.pr_names span {
+    color: #535353;
+}
+.content_image img {
+    width: 96%;
+    margin: -87px 0 0 0;
+}
+.cloumn_flex.content_image {
+    background: url(/src/assets/h2-s11.png);
+    background-size: 100%;
+}
+.service_kd {
+    background: #17414f;
+    padding: 0px 57px 57px 57px;
+    border-radius: 45px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -180px 0 0 0;
+}
+.ser_1 {
+    width: 33%;
+    text-align: center;
+    padding: 29px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+.ser_head h3 {
+    color: #fff;
+    font-size: 23px;
+    width: 100%;
+    font-weight: 600;
+}
+.ser_head {
+    width: 100%;
+    margin: 18px 0 0 0;
+}   
+.ser_img {
+    background: #fff;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.ser_1:nth-child(01), .ser_1:nth-child(02), .ser_1:nth-child(03) {
+    margin: -98px 0 0 0;
+}
