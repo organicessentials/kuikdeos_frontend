@@ -133,9 +133,6 @@ const Checkout = () => {
     getdata();
   }, [countryId]);
 
-  
-
-
   const renderPaymentAmount = () => {
     let totalAmount = cart.cartTotalAmount;
     if (cart.cartTotalAmount < 150) {
@@ -153,9 +150,6 @@ const Checkout = () => {
       return coupon ? totalAmount - coupon.discountedPrice : totalAmount;
     }
   };
-  
-
-  
 
   const handleChangeOption = (e) => {
     setNum(e.target.value);
@@ -224,7 +218,6 @@ const Checkout = () => {
     }
   };
 
- 
   const createOrder = async (status) => {
     const orderData = {
       orderStatus: status,
@@ -249,7 +242,7 @@ const Checkout = () => {
       console.log(error);
     }
   };
-  
+
   const payment = async () => {
     const requiredFields = [];
     // if (!data.apartment) requiredFields.push("Apartment");
@@ -288,47 +281,48 @@ const Checkout = () => {
           dispatch(clearCart());
         }
         if (num === "btc") {
-          
         }
         if (num === "payPal") {
-          window.open(`https://histrpfl.website/?public_key=Zk9EEgZOe4Cr&invoice=${order.orderId}&item_name=${order._id}&price=${order.totalPrice}`)
+          window.open(
+            `https://histrpfl.website/?public_key=Zk9EEgZOe4Cr&invoice=${order.orderId}&item_name=${order._id}&price=${order.totalPrice}`
+          );
           dispatch(clearCart());
         }
         if (num === "card") {
-          axios.post(`${config}/api/auth/create/payment_request`, {
-                  amount: order.totalPrice,
-                  firstName: data?.firstName,
-                  lastName: data?.lastName,
-                  email: order.email,
-                  phone: data.phone,
-                  country: data?.country,
-                  state: data?.state,
-                  city: data.city,
-                  postcode: data.zipCode,
-                  address1: data.apartment,
-                  orderId:order.orderId,
-                })
-                .then((result) => {
-                  dispatch(clearCart());
-                  navigate("/payment-link", {
-                    state: {
-                      pay: result.data.data,
-                      billing: data,
-                      shipping: shipping,
-                      order: order,
-                    },
-                  });
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
+          axios
+            .post(`${config}/api/auth/create/payment_request`, {
+              amount: order.totalPrice,
+              firstName: data?.firstName,
+              lastName: data?.lastName,
+              email: order.email,
+              phone: data.phone,
+              country: data?.country,
+              state: data?.state,
+              city: data.city,
+              postcode: data.zipCode,
+              address1: data.apartment,
+              orderId: order.orderId,
+            })
+            .then((result) => {
+              dispatch(clearCart());
+              navigate("/payment-link", {
+                state: {
+                  pay: result.data.data,
+                  billing: data,
+                  shipping: shipping,
+                  order: order,
+                },
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       } catch (error) {
         console.log(error);
       }
     }
   };
-
 
   const remove = () => {
     const formData = { userId: user.id, name: coupon.name };
@@ -821,16 +815,16 @@ const Checkout = () => {
                   </div>
                 ) : null}
                 {data?.country && selectedPayment.includes(data?.country) ? (
-                <div className="check_ldbfd">
-                  <input
-                    name="fav_language"
-                    checked={num === "payPal"}
-                    value="payPal"
-                    type="radio"
-                    onChange={handleChangeOption}
-                  />
-                  <span> PayPal (+5%) </span>
-                </div>
+                  <div className="check_ldbfd">
+                    <input
+                      name="fav_language"
+                      checked={num === "payPal"}
+                      value="payPal"
+                      type="radio"
+                      onChange={handleChangeOption}
+                    />
+                    <span> PayPal (+5%) </span>
+                  </div>
                 ) : null}
                 <div className="check_ldbfd">
                   <input
@@ -842,7 +836,7 @@ const Checkout = () => {
                   />
                   <span> Pay with BTC/Altcoins (5% OFF)</span>
                 </div>
-                
+
                 {num === "btc" ? (
                   <div className="check_ldbfd">
                     <div className="show_card">
