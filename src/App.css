@@ -2244,6 +2244,27 @@ span.data_policy a {
   margin: 0px 0 0 0;
 }
 @media screen and (min-width: 601px) and (max-width: 900px) {
+  .container_banner {width: 90% !important;}
+  .leftfoo_list {flex-wrap: wrap;}
+  .list_footer1, .list_footer2 {width: 100% !important;}
+.banner_kd h2 {font-size: 114px !important;}
+.faqs1 {width: 100% !important;}
+.faqs_section {flex-wrap: wrap !important;}
+.affili_deat {flex-wrap: wrap;}
+.affilia_cont1 {width: 100% !important;margin: 13px 0 12px 0 !important;}
+.header {padding: 11px 14px;}
+.columns_banner {flex-wrap: wrap;}
+.cloumn_flex {width: 100% !important;}
+.cloumn_flex.content_image {margin: 51px 0 23px 0;}
+.ser_1 {width: 50% !important;}
+.collect_sec {height: 217px !important;width: 44% !important;}
+.collect_sec.colle_1 h2 {font-size: 33px;}
+.revies_sec {flex-wrap: wrap;}
+.reviews_sens {width: 100% !important;margin: 0 0 25px 0;}
+.rev_kd2 { margin: 0 0 23px 0 !important; }
+.ser_1:nth-child(01), .ser_1:nth-child(02), .ser_1:nth-child(03) {  margin: 0px 0 0 0 !important;}
+.service_kd {padding: 0px 7px 7px 7px !important;}
+.ser_head h3 {font-size: 22px;}
 .cart_main_panel {flex-wrap: wrap;}
 .view_cart_pnl {width: 100%;margin: 40px 0 0 0;}
 .container_sec { width: 90%; margin: 0 auto; }
@@ -2285,6 +2306,9 @@ button.add_cart-account {padding: 10px 18px !important;}
 
 /* Styles for devices with a screen width between 901px and 1200px */
 @media screen and (min-width: 901px) and (max-width: 1200px) {
+  .container_banner {width: 90% !important;}
+  .pro_details {width: 22% !important;}
+  .ser_1:nth-child(01), .ser_1:nth-child(02), .ser_1:nth-child(03) {margin: 0px 0 0 0 !important;}
   button.add_cart-account {padding: 10px 34px !important;}
   .container_sec { width: 90%; margin: 0 auto; }
   .container_foot { width: 90%; margin: 0 auto; }
@@ -2302,6 +2326,13 @@ button.add_cart-account {padding: 10px 18px !important;}
 }
 }
 @media screen and (min-width:300px) and (max-width:600px) {
+  .container_banner {
+    width: 90% !important;
+    margin: 0 auto;
+}
+.leftfoo_list {
+  flex-wrap: wrap;
+}
   .tmr_reting2 .reting_widget {
     width: 100%;
 }
@@ -2323,6 +2354,9 @@ button.add_cart-account {padding: 10px 18px !important;}
     padding: 10px 29px !important;
     margin: 0 14px 10px 0 !important;
 }
+.header {
+  padding: 11px 14px;
+}
   .col-lg-4,.col-lg-8 {width: 100% !important;}
   .row_account {flex-wrap: wrap;}
   .row_checkout {flex-wrap: wrap;}
@@ -2330,6 +2364,7 @@ button.add_cart-account {padding: 10px 18px !important;}
   .checkou_details { width: 100%;margin: 45px 0 0 0;}
   h2.pro_secti { font-size: 43px; line-height: 45px; }
   .return_login {padding: 0 32px;}
+  .option_user {display: flex;flex-wrap: wrap;}
   .shipi_detai .abot_c { height: auto; flex-wrap: wrap; background: #000; padding: 30px 24px; }
   .other_de { float: left; width: 100%; margin: 23px 0 0 0; }
   .textship { width: 100%; }
@@ -2383,7 +2418,112 @@ h2.blog_heading {font-size: 39px;line-height: 38px;}
 .ne_lett input {margin: 0 0 0 0;}
 .foot_left {width: 100%;margin: 0 0 0 0;}
 .footer_company {width: 100%;float: left;}
-.list_footer1, .list_footer2 {width: 50%;float: left;}
+.list_footer1, .list_footer2 {width: 100%;float: left;}
+.ser_1 {
+  width: 50%;
+}
+.service_kd {
+  padding: 0 3px;
+}
+.collect_sec {
+  height: 197px !important;
+  display: flex;
+  width: 100% !important;
+  flex-direction: row !important;
+  margin: 9px 0;
+}
+.ser_1 {
+  width: 100% !important;
+}
+.ser_1:nth-child(01), .ser_1:nth-child(02), .ser_1:nth-child(03) {
+  margin: 0px 0 0 0 !important;
+}
+.banner_kd h2 {
+  font-size: 71px !important;
+}
+.collect_sec.colle_1 h2 {
+  font-size: 40px !important;
+}
+.copytext {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.copytext img {
+  width: 60%;
+}
+.faqs_section {  flex-wrap: wrap;
+}
+.form_groups {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+.affili_deat {
+  display: flex;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+.affilia_cont1 {
+  width: 100% !important;
+  margin: 0 0 13px 0;
+}
+.form_group {
+  width: 100%;}
+.abot_kd {flex-wrap: wrap;}
+.kd_lo {width: 100%;}
+.conte_abt_kd {width: 100%;}
+.faqs1 {width: 100%;}
+
+.revies_sec {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+.reviews_sens {
+  width: 100%;
+  margin: 0 0 26px 0;
+}
+.count_1 {
+  width: 50%;
+  text-align: center;
+  margin: 0 0 39px 0;
+}
+.count_sec {
+  display: flex;
+  flex-wrap: wrap;
+}
+.count_1 span {
+  font-size: 20px;
+}
+span.number_cu {
+  font-size: 50px;
+}
+.about_img {
+  width: 100%;
+}
+.about_content {
+  width: 100%;
+  margin: 28px 0 0 0;
+}
+.cloumn_flex {
+  width: 100% !important;
+}
+.pr_names {
+  width: 93%;
+  margin: 0 0 0 14px;
+}
+.cloumn_flex.content_image {
+  background-size: 100%;
+  margin: 50px 0 23px 0;
+}
+.columns_banner {
+  flex-wrap: wrap;
+}
+.about_flex {
+  display: flex;
+  flex-direction: column;
+}
 .list_footer3 {width: 100%;margin: 26px 0 15px 0;}
 .foot_right {width: 100%;}
 .pay_img {margin: 27px 0 0 0;}
@@ -2722,21 +2862,14 @@ button.add_cart-account.pro_checkou {
   background: #41b9e2;
 }
 span.wlcm {
-  font-family: Elsie;
+  font-family: 'Jost';
   font-size: 40px;
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 0.6px;
   text-transform: capitalize;
   color: #2e5147;
 }
-span.wlcm {
-  font-family: Elsie;
-  font-size: 40px;
-  font-weight: 400;
-  letter-spacing: 0.6px;
-  text-transform: capitalize;
-  color: #2e5147;
-}
+
 
 
 table.order_table tr th {
