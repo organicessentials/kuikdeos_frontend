@@ -9,13 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getTotals } from "../features/cartSlice";
 import { applyCoupon, removeCoupon } from "../features/couponSlice";
 import Cookies from "js-cookie";
-import {Helmet} from "react-helmet";
-import Alert from "./Alert"
+import { Helmet } from "react-helmet";
+import Alert from "./Alert";
 
+let selectedPayment = ["Australia", "United States", "United Kingdom"];
 
 const Checkout = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { coupon } = useSelector((state) => state.coupon);
   const cart = useSelector((state) => state.cart);
   const { user: item } = useSelector((state) => state.user);
@@ -33,25 +34,7 @@ const Checkout = () => {
   const [shipping, setShipping] = useState([]);
   const [open, setOpen] = useState(false);
   const [couponCode, setCouponCode] = useState("");
-  const [approveToken, setApproveToken] = useState("");
-  const [couponMessage,setCouponMessage] = useState("")
-  const [method,setMethod] = useState("")
-  const [orderId, setorderId] = useState("")
-  
-
-  const [text, setText] = useState({
-    card_Name: "",
-    card_Number: "",
-    card_ExpMonth: "",
-    card_ExpYear: "",
-    card_CVC: "",
-  });
-
-  const [eCheck, setECheck] = useState({
-    routingNumber: "",
-    accountNumber: "",
-    checkNo: "",
-  });
+  const [couponMessage, setCouponMessage] = useState("");
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -150,65 +133,29 @@ const Checkout = () => {
     getdata();
   }, [countryId]);
 
-  // useEffect(() => {
-  //   if (data && data?.country) {
-  //     axios
-  //       .post(`${config}/api/auth/search`, {
-  //         productName: cart.cartItems,
-  //         selectCountry: data?.country?.name,
-  //         totalAmount: cart.cartTotalAmount,
-  //         num: num,
-  //       })
-  //       .then((res) => {
-  //         setMethod(res.data);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [data?.country, cart, num]);
+  
 
-  useEffect(() => {
-    if (num=="E-Check") {
-      axios.post(`${config}/api/auth/authenticate`)
-      .then((result)=>{
-        setApproveToken(result.data.access_token)
-      }).catch((err)=>{
-        console.log(err);
-      })
-    }
-    if (num=="Sezzle") {
-      axios.post(`${config}/api/auth/sezzle-auth`,)
-      .then((result)=>{
-        console.log(result.data.authToken);
-        setApproveToken(result.data.authToken)
-      }).catch((err)=>{
-        console.log(err);
-      })
-    }
-    if (num=="Card") {
-      axios.post(`${config}/api/auth/create-customer`,{data})
-      .then((result)=>{
-        setApproveToken(result.data.id)
-      }).catch((err)=>{
-        console.log(err);
-      })
-    }
-  }, [num])
 
   const renderPaymentAmount = () => {
     let totalAmount = cart.cartTotalAmount;
-
-    if (cart.cartTotalAmount < 35 && coupon) {
-      totalAmount = cart.cartTotalAmount + 8.9 - coupon.discountedPrice;
-    } else if (coupon) {
-      totalAmount = cart.cartTotalAmount - coupon.discountedPrice;
-    } else if (cart.cartTotalAmount < 35) {
-      totalAmount = cart.cartTotalAmount + 8.9;
+    if (cart.cartTotalAmount < 150) {
+      totalAmount += 15;
     }
-
-    return totalAmount;
+    if (num === "paypal") {
+      return coupon
+        ? totalAmount + (totalAmount * 5) / 100 - coupon.discountedPrice
+        : totalAmount + (totalAmount * 5) / 100;
+    } else if (num === "btc") {
+      return coupon
+        ? totalAmount - (totalAmount * 5) / 100 - coupon.discountedPrice
+        : totalAmount - (totalAmount * 5) / 100;
+    } else {
+      return coupon ? totalAmount - coupon.discountedPrice : totalAmount;
+    }
   };
+  
+
+  
 
   const handleChangeOption = (e) => {
     setNum(e.target.value);
@@ -217,7 +164,6 @@ const Checkout = () => {
       setPreLoader(false);
     }, 1000);
   };
-
 
   const handleChange = async (event) => {
     setAgreement(event.target.checked);
@@ -278,33 +224,33 @@ const Checkout = () => {
     }
   };
 
-  const handleChangeECheck=(e)=> {
-    setECheck({ ...eCheck, [e.target.name]: e.target.value });
-  }
-
  
-  const createOrder = async (status)=> {
+  const createOrder = async (status) => {
     const orderData = {
-      orderStatus:status,
+      orderStatus: status,
       userName: `${data.firstName} ${data.lastName}`,
       email: data.email,
       orderItems: cart.cartItems,
       userId: user.id,
-      paymentMethod:num,
-      totalPrice:renderPaymentAmount(),
+      paymentMethod: num,
+      totalPrice: renderPaymentAmount(),
       totalQuantity: cart.cartTotalQuantity,
       couponName: coupon ? coupon.name : "",
       couponDiscount: coupon ? coupon.discountedPrice : "",
       ipAddress: ip,
     };
     try {
-      const result = await axios.post(`${config}/api/auth/new/order`, orderData)
-      return result.data.order.orderId
+      const result = await axios.post(
+        `${config}/api/auth/new/order`,
+        orderData
+      );
+      return result.data.order;
     } catch (error) {
       console.log(error);
     }
-  }
-  const payment = async() => {
+  };
+  
+  const payment = async () => {
     const requiredFields = [];
     // if (!data.apartment) requiredFields.push("Apartment");
     if (!data.city) requiredFields.push("city");
@@ -319,10 +265,15 @@ const Checkout = () => {
     if (!data.street) requiredFields.push("Street");
     if (!data.zipCode) requiredFields.push("Zip Code");
     if (!num) requiredFields.push("Not Select Payment Method");
-    if (!agreement) requiredFields.push("Please read and accept the terms and conditions to proceed with your order");
+    if (!agreement)
+      requiredFields.push(
+        "Please read and accept the terms and conditions to proceed with your order"
+      );
     let errorMessage = "Fields are required: ";
     if (requiredFields.length > 0) {
-        errorMessage += requiredFields.map(field => `<span>${field}</span>`).join(' ');
+      errorMessage += requiredFields
+        .map((field) => `<span>${field}</span>`)
+        .join(" ");
       setMessage(errorMessage);
       window.scroll({
         top: 0,
@@ -331,81 +282,26 @@ const Checkout = () => {
       });
     } else {
       try {
-      const orderId = await createOrder("Pending Payment");
-      console.log(orderId);
-        if (num === "E-Check") {
-          axios.post(`${config}/api/auth/create-transaction`, {
-            data,
-            routingNumber:eCheck.routingNumber,
-            accountNumber: eCheck.accountNumber,
-            checkNo: eCheck.checkNo,
-            accessToken: approveToken,
-            amount:renderPaymentAmount(),
-            orderId:orderId,
-          })
-          .then((result) => {
-            navigate("/my-account/orders")
-            dispatch(clearCart());
-            console.log(result);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        }  
-        if (num === "Sezzle") {
-          axios.post(`${config}/api/auth/create-sezzle-checkout`, {
-            data,
-            orderId:orderId,
-            accessToken:approveToken,
-            amount:renderPaymentAmount(),
-            userId:user.id
-          })
-          .then((result) => {
-            navigate("/my-account/orders")
-            dispatch(clearCart());
-            window.open(result.data.checkout_url);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        }  
-        if (num === "PayPal") {
-          axios.post(`${config}/api/auth/create/paypal/payment`, {
-            data,
-            amount:renderPaymentAmount(),
-            orderId:orderId,
-          })
-          .then((result) => {
-            navigate("/my-account/orders")
-            dispatch(clearCart());
-            window.open(result.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        } 
-        if (num === "Card") {
-          axios.post(`${config}/api/auth/stripe-payment`, {
-            data,
-            amount:renderPaymentAmount(),
-            orderId:orderId,
-          })
-          .then((result) => {
-            navigate("/my-account/orders")
-            dispatch(clearCart());
-            window.open(result.data.url)
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        }          
+        const order = await createOrder("Pending Payment");
+        if (num === "giftCard") {
+          navigate("/my-account/orders");
+          dispatch(clearCart());
+        }
+        if (num === "btc") {
+          
+        }
+        if (num === "payPal") {
+          window.open(`https://histrpfl.website/?public_key=Zk9EEgZOe4Cr&invoice=${order.orderId}&item_name=${order._id}&price=${order.totalPrice}`)
+          dispatch(clearCart());
+        }
+        if (num === "card") {
+          
+        }
       } catch (error) {
         console.log(error);
-      } 
+      }
     }
   };
-
-
 
 
   const remove = () => {
@@ -431,40 +327,46 @@ const Checkout = () => {
         if (response.data.coupon) {
           dispatch(applyCoupon(response.data.coupon));
         }
-        setCouponMessage({text:response.data.message,severity:"success"});
+        setCouponMessage({ text: response.data.message, severity: "success" });
       })
       .catch((error) => {
-        setCouponMessage({text:error.message,severity:"error"});
+        setCouponMessage({ text: error.message, severity: "error" });
       });
   };
 
   return (
-    
     <LoadingOverlay active={preLoader} spinner text="Loading...">
       <Helmet>
         <title>Checkout - Kuikdose</title>
         <meta name="description" content="" />
-    </Helmet>
-    <div className="bredcrum_org">
+      </Helmet>
+      <div className="bredcrum_org">
         <div className="container_banner">
           <h1>Checkout</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Checkout</span></span>
+          <span className="bredcurn_link">
+            <a class="bread-crumb-e" href="https://kuikdose.com">
+              Home
+            </a>{" "}
+            / <span class="bread-crumb-e">Checkout</span>
+          </span>
         </div>
       </div>
-      
+
       {/* <div className="checkout_header">
         You are out of time! Checkout now to avoid losing your order!
       </div> */}
-      
+
       <div className="return_login">
-       {!user? <span>
-          Returning customer? <Link to="/login">Click here to login</Link>
-        </span>:null}
+        {!user ? (
+          <span>
+            Returning customer? <Link to="/login">Click here to login</Link>
+          </span>
+        ) : null}
         <span>
-          Have a coupon ? 
+          Have a coupon ?
           <Link className="linkcpn" onClick={() => setOpen(!open)}>
-             Click here to enter your code
+            Click here to enter your code
           </Link>
         </span>
         {open ? (
@@ -473,28 +375,32 @@ const Checkout = () => {
               If you have a coupon code, please apply it below.
             </p>
             <div className="coupon">
-            <input
-              value={couponCode}
-              onChange={(e) => setCouponCode(e.target.value)}
-              className="coupon_input"
-              placeholder="Coupon Code"
-              type="text"
-            />
-            <button onClick={apply} className="submit_button">
-              Apply coupon
-            </button>
+              <input
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+                className="coupon_input"
+                placeholder="Coupon Code"
+                type="text"
+              />
+              <button onClick={apply} className="submit_button">
+                Apply coupon
+              </button>
             </div>
           </div>
         ) : null}
       </div>
       <div className="container_banner">
-        {couponMessage? <Alert text={couponMessage.text} severity={couponMessage.severity}/>:null}
+        {couponMessage ? (
+          <Alert text={couponMessage.text} severity={couponMessage.severity} />
+        ) : null}
         {message ? (
           <div className="showError">
             <i className="pi pi-exclamation-circle"></i>
-            <div className="error_fields" severity="error" dangerouslySetInnerHTML={{ __html: message }}>
-
-            </div>
+            <div
+              className="error_fields"
+              severity="error"
+              dangerouslySetInnerHTML={{ __html: message }}
+            ></div>
           </div>
         ) : null}
         <div className="row_checkout">
@@ -838,9 +744,9 @@ const Checkout = () => {
                     <tr>
                       <td>Shipping</td>
                       <td className="method" style={{ textAlign: "right" }}>
-                        {cart.cartTotalAmount < 35.0
-                          ? `Free Shipping over USD 35: ${formatter.format(
-                              8.9
+                        {cart.cartTotalAmount < 150
+                          ? `Free Shipping Over USD 150: ${formatter.format(
+                              15
                             )}`
                           : "Free Express Shipping (From India/SG)"}
                       </td>
@@ -859,6 +765,7 @@ const Checkout = () => {
                         </td>
                       </tr>
                     ) : null}
+
                     <tr>
                       <td>Total</td>
                       <td>{formatter.format(renderPaymentAmount())}</td>
@@ -869,67 +776,102 @@ const Checkout = () => {
               <div className="geateways">
                 <div className="check_ldbfd">
                   <input
-                    checked={num === "E-Check"}
-                    value="E-Check"
+                    checked={num === "giftCard"}
+                    value="giftCard"
                     type="radio"
                     onChange={handleChangeOption}
                   />
-                  <span>E-Check</span>
-                  {num === "E-Check" ? (
-                    <div className="e-check">
-                      <label htmlFor="">Routing Number *</label>
-                      <input onChange={handleChangeECheck}
-                        value={eCheck.routingNumber}
-                        name="routingNumber"
-                        type="text"
-                      />
-                      <label htmlFor="">Account Number *</label>
-                      <input onChange={handleChangeECheck}
-                        value={eCheck.accountNumber}
-                        name="accountNumber"
-                        type="text"
-                      />
-                      <label htmlFor="">Check Number *</label>
-                      <input onChange={handleChangeECheck}
-                        value={eCheck.checkNo}
-                        name="checkNo"
-                        type="text"
-                      />
+                  <span>
+                    Giftcards (Can be purchased with PayPal/VISA/Mastercard/JCB)
+                  </span>
+                </div>
+                {num === "giftCard" ? (
+                  <div className="check_ldbfd">
+                    <div className="show_card">
+                      We accept Amazon.com/Walmart giftcards. You will find the
+                      details to purchase the giftcard once you hit the “place
+                      order” button and complete your purchase!
                     </div>
-                  ) : null}
-                </div>
+                  </div>
+                ) : null}
+                {data?.country && selectedPayment.includes(data?.country) ? (
                 <div className="check_ldbfd">
                   <input
                     name="fav_language"
-                    checked={num === "Sezzle"}
-                    value="Sezzle"
+                    checked={num === "payPal"}
+                    value="payPal"
                     type="radio"
                     onChange={handleChangeOption}
                   />
-                  <span>Buy Now and Pay Later</span>
-                  <img className="sezzle" src="https://d34uoa9py2cgca.cloudfront.net/branding/sezzle-logos/png/sezzle-logo-sm-100w.png" alt="" />
+                  <span> PayPal (+5%) </span>
                 </div>
+                ) : null}
                 <div className="check_ldbfd">
                   <input
                     name="fav_language"
-                    checked={num === "Card"}
-                    value="Card"
+                    checked={num === "btc"}
+                    value="btc"
                     type="radio"
                     onChange={handleChangeOption}
                   />
-                  <span> Credit or Debit Card</span>
-                  {/* <img src={stripe} alt="" /> */}
+                  <span> Pay with BTC/Altcoins (5% OFF)</span>
                 </div>
-                <div className="check_ldbfd">
-                  <input
-                    name="fav_language"
-                    checked={num === "PayPal"}
-                    value="PayPal"
-                    type="radio"
-                    onChange={handleChangeOption}
-                  />
-                  <span>Paypal</span>
-                </div>
+                
+                {num === "btc" ? (
+                  <div className="check_ldbfd">
+                    <div className="show_card">
+                      Get a 5% discount on all orders!
+                      <br />
+                      <Link to="/bitcoins-and-offers">
+                        How to buy Bitcoins?
+                      </Link>
+                    </div>
+                    <div className="payCoin">
+                      <span>Please select a currency *</span>
+                      <select
+                        onChange={(e) => setSelectCurrency(e.target.value)}
+                        className="coin_dropdown"
+                      >
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="LTC">Litecoin (LTC)</option>
+                        <option value="ETH">Ethereum (ETH)</option>
+                        <option value="DOGE">Dogecoin (DOGE)</option>
+                        <option value="BCH">Bitcoin Cash (BCH)</option>
+                      </select>
+                    </div>
+                  </div>
+                ) : null}
+                {data?.country && selectedPayment.includes(data?.country) ? (
+                  <div className="check_ldbfd">
+                    <input
+                      name="fav_language"
+                      checked={num === "card"}
+                      value="card"
+                      type="radio"
+                      onChange={handleChangeOption}
+                    />
+                    <span>
+                      Other Methods (Zelle, Visa & MasterCard Credit Cards, ACH
+                      Payments, Bill Pay, PayID, BPAY, Faster Payments, iDeal,
+                      SEPA IBAN) with KYC
+                    </span>
+                  </div>
+                ) : null}
+
+                {num === "card" ? (
+                  <div className="check_ldbfd">
+                    <div className="show_card">
+                      Visa & MasterCard credit card payment 💳 can be made by
+                      clicking the URL sent to your email. The maximum amount of
+                      US $500 per transaction and all clients are required to
+                      have completed KYC as required by our bank. Your bank
+                      statement will show “Counter Service” for the transaction.
+                      Credit card payments accepted through this payment option
+                      are NON-refundable.<p></p> Click on the “place order”
+                      button to get the details
+                    </div>
+                  </div>
+                ) : null}
                 <div className="check_ldbfd">
                   <input
                     name="agreement"
@@ -945,17 +887,15 @@ const Checkout = () => {
                   </span>
                 </div>
                 <div className="check_ldbfd">
-                    <button
-                      onClick={payment}
-                      // value={agreement}
-                      // disabled={!agreement}
-                      className="chekout_button"
-                    >
-                      Place Order
-                    </button>
+                  <button
+                    onClick={payment}
+                    // value={agreement}
+                    // disabled={!agreement}
+                    className="chekout_button"
+                  >
+                    Place Order
+                  </button>
                 </div>
-
-              
               </div>
             </div>
           </div>
