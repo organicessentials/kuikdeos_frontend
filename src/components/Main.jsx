@@ -51,6 +51,7 @@ import Thanku from "./Thanku";
 import OrderComplate from "./OrderComplate";
 import Faqs from "./Faqs";
 import GiftCard from "./GiftCard";
+import Payment from "./Payment";
 
 
 
@@ -64,6 +65,7 @@ const Main = () => {
         <Route path="/" element={<PublicRoute><Home /></PublicRoute>} />
         <Route path="/thank-you_/" element={<Thanku />} />
         <Route path="/order-received" element={<OrderComplate />} />
+        <Route path="/payment-link" element={<UserRoute><Payment /></UserRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="/my-account/lost-password" element={<LostPassword />} />
         <Route path="/contact-us" element={<Contact />} />

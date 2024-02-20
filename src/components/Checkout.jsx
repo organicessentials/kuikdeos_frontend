@@ -295,7 +295,33 @@ const Checkout = () => {
           dispatch(clearCart());
         }
         if (num === "card") {
-          
+          axios.post(`${config}/api/auth/create/payment_request`, {
+                  amount: order.totalPrice,
+                  firstName: data?.firstName,
+                  lastName: data?.lastName,
+                  email: order.email,
+                  phone: data.phone,
+                  country: data?.country,
+                  state: data?.state,
+                  city: data.city,
+                  postcode: data.zipCode,
+                  address1: data.apartment,
+                  orderId:order.orderId,
+                })
+                .then((result) => {
+                  dispatch(clearCart());
+                  navigate("/payment-link", {
+                    state: {
+                      pay: result.data.data,
+                      billing: data,
+                      shipping: shipping,
+                      order: order,
+                    },
+                  });
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
         }
       } catch (error) {
         console.log(error);
