@@ -284,7 +284,7 @@ const Checkout = () => {
       try {
         const order = await createOrder("Pending Payment");
         if (num === "giftCard") {
-          navigate("/my-account/orders");
+          navigate("/giftcard");
           dispatch(clearCart());
         }
         if (num === "btc") {

@@ -45,59 +45,23 @@ import OrganicBlog from './OrganicBlog'
 import Blogs_de from './Blogs_de'
 import ViewOrder from "./dashboard/ViewOrder";
 import OrderPay from "./dashboard/OrderPay";
-import gifLoader from "../assets/Loader-1.gif"
-import { useDispatch, useSelector } from "react-redux";
-import { productsFetch } from "../features/productsSlice";
 import Password from "./Password";
 import TrackOrder from "./TrackOrder";
-import Blogs from "./Blogs";
 import Thanku from "./Thanku";
 import OrderComplate from "./OrderComplate";
 import Faqs from "./Faqs";
+import GiftCard from "./GiftCard";
 
 
 
 const Main = () => {
-  
-  const location = useLocation()
-  // const dispatch = useDispatch();
-  // const loading = useSelector((state) => state.products.loading);
-  const [loading,setLoading] = useState(true)
 
-  // useEffect(() => {
-  //   dispatch(productsFetch());
-  // }, [dispatch]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    },5000);
-  }, [])
-  
-
-
-  
-  if (loading) {
-    return (
-      <div className="loading_layout">
-      <img src={gifLoader} className="preloader" alt="logo" />
-      </div>
-    );
-  }
-  
 
   return (
     <>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PublicRoute>
-              <Home />
-            </PublicRoute>
-          }
-        />
+        <Route path="/" element={<PublicRoute><Home /></PublicRoute>} />
         <Route path="/thank-you_/" element={<Thanku />} />
         <Route path="/order-received" element={<OrderComplate />} />
         <Route path="/login" element={<Login />} />
@@ -106,6 +70,7 @@ const Main = () => {
         <Route path="/suggest-a-product" element={<Suggest />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/checkout" element={<UserRoute><Checkout/></UserRoute>} />
+        <Route path="/giftcard" element={<PublicRoute><GiftCard /></PublicRoute>}/>
         <Route path="/categories" element={<Categories />} />
         <Route path="/organic-nutrients-for-brain-health-a-comprehensive-guide" element={<OrganicBlog />} />
         <Route path='/about-us' element={<About_Us/>}/>

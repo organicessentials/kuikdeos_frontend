@@ -34,11 +34,6 @@ const Dashboard = () => {
         </tr>
         <tr>
           <td>
-            <Link to="/my-account/downloads/">Downloads</Link>
-          </td>
-        </tr>
-        <tr>
-          <td>
             <Link to="/my-account/edit-address">Addresses</Link>
           </td>
         </tr>
