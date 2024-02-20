@@ -15,7 +15,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(productsFetch(1));
-  }, []);
+  }, [dispatch]);
 
   // const selectedSlugs = [
   //   "ashwagandha-gold-capsules","ashwagandha-ksm-66-500mg","gotu-kola","gotu-kola-tablets","l-theanine-100mg","l-theanine-200mg","rhodiola-500mg",

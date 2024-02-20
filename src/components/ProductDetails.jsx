@@ -6,20 +6,21 @@ import Tab from "./Tab";
 import Toast from "./Toast";
 import axios from "axios";
 import config from "../config";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import gifLoader from "../assets/Loader-1.gif";
 
 const ProductDetails = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const params = useParams()
+  const params = useParams();
   const [preLoader, setPreLoader] = useState(true);
   const [activeIndex, setActiveIndex] = useState(null);
-  const [product,setProduct] = useState("")
+  const [product, setProduct] = useState("");
   const [visibleTop, setVisibleTop] = useState(true);
   const [num, setNum] = useState(0);
   const cart = useSelector((state) => state.cart);
+  const [varian, setVarian] = useState("");
+  const [showVariantPrice,setShowVariantPrice] = useState("")
   console.log(product);
 
   useEffect(() => {
@@ -30,32 +31,35 @@ const ProductDetails = () => {
     });
   }, []);
 
-
-  const getData =async() => {
+  const getData = async () => {
     try {
-      const result = await axios.get(`${config}/api/auth/show/product/${params?.id}`)
+      const result = await axios.get(
+        `${config}/api/auth/show/product/${params?.id}`
+      );
       setProduct(result.data);
-      setPreLoader(false)
+      setPreLoader(false);
     } catch (error) {
       console.log(error);
-    } 
-  }
+    }
+  };
 
   useEffect(() => {
-    getData()
-  }, [params?.id])
-  
- console.log(product);
+    getData();
+  }, [params?.id]);
+
+  const selectVariant = (e) => {
+    setVarian(e.target.value);
+  };
 
   const addProduct = () => {
     let newItem = {
       name: product.name,
-      price: num.price ? num.price : product.variants[0].price,
+      price: showVariantPrice ? showVariantPrice : product.variants[0].price,
       id: product._id,
       image: product.image,
     };
     dispatch(addToCart(newItem));
-    Toast({title:"Add Cart",type:"success"})
+    Toast({ title: "Add Cart", type: "success" });
   };
 
   const increment = () => {
@@ -69,7 +73,7 @@ const ProductDetails = () => {
   const buyProduct = () => {
     let newItem = {
       name: product.name,
-      price: num.price ? num.price : product.variants[0].price,
+      price: showVariantPrice ? showVariantPrice : product.variants[0].price,
       id: product._id,
       image: product.image,
     };
@@ -86,40 +90,45 @@ const ProductDetails = () => {
     const newIndex = parseInt(e.target.value, 10);
     setActiveIndex(newIndex);
   };
-  const handelChange = (doc,index) => {
-    
-    setActiveIndex(index === activeIndex ? null : index);
-    console.log(doc);
-    setVisibleTop(true);
-    setNum(doc);
+  const handelChange = (e) => {
+    setShowVariantPrice(e.target.value);
+    // setVisibleTop(true);
   };
 
   if (preLoader) {
     return (
       <div className="loading_layout">
-      <img src={gifLoader} className="preloader" alt="logo" />
+        <img src={gifLoader} className="preloader" alt="logo" />
       </div>
     );
   }
-  
-
 
   return (
     <>
-         
-        <div>
+      <div>
         <Helmet>
-        <title>{product.seoTitle?product.seoTitle:product.name}</title>
-        <meta name="description" content={product.seoDescription} />
-    </Helmet>
-    <div className="bredcrum_org">
-        <div className="container_banner">
-          <h1>Product</h1>
+          <title>{product.seoTitle ? product.seoTitle : product.name}</title>
+          <meta name="description" content={product.seoDescription} />
+        </Helmet>
+        <div className="bredcrum_org">
+          <div className="container_banner">
+            <h1>Product</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="/">Home</a> / <span class="bread-crumb-e"><Link to={`/product-category/${product?.category}`}>{product?.category}</Link></span> /<span class="bread-crumb-e">{product?.name}</span></span>
+            <span className="bredcurn_link">
+              <a class="bread-crumb-e" href="/">
+                Home
+              </a>{" "}
+              /{" "}
+              <span class="bread-crumb-e">
+                <Link to={`/product-category/${product?.category[0].name}`}>
+                  {product?.category[0].name}
+                </Link>
+              </span>{" "}
+              /<span class="bread-crumb-e">{product?.name}</span>
+            </span>
+          </div>
         </div>
-      </div>
-        
+
         <section className="details_page">
           <div className="container_banner">
             <div className="row">
@@ -131,11 +140,8 @@ const ProductDetails = () => {
                     alt="product_img"
                   />
                 </div>
-                
-                
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                
                 <h3 className="product_title ">{product?.name}</h3>
                 <h4 className="pro_price">
                   {product?.variants && product.variants[0] && (
@@ -148,14 +154,16 @@ const ProductDetails = () => {
                   )}
                 </h4>
                 <div
-                  dangerouslySetInnerHTML={{ __html: product?.shortDescription }}
+                  dangerouslySetInnerHTML={{
+                    __html: product?.shortDescription,
+                  }}
                 ></div>
 
                 <div>
                   <div className="veri-details">
                     <p c>{product?.name}</p>
                     <div className="pro_ver">
-                      {product?.variants?.map((doc, i) => (
+                      {/* {product?.variants?.map((doc, i) => (
                         <span
                           onClick={() => handelChange(doc, i)}
                           className={
@@ -164,7 +172,38 @@ const ProductDetails = () => {
                         >
                           {doc.attributeValue}
                         </span>
-                      ))}
+                      ))} */}
+                      <label htmlFor="">{product.variants[0].attribute}</label>
+                      <select onClick={selectVariant}>
+                      <option value="">Choose option</option>
+                        {product?.variants
+                          ?.map((doc) => doc.attributeValue)
+                          ?.filter(
+                            (value, index, self) =>
+                              self.indexOf(value) === index
+                          )
+                          ?.map((uniqueValue) => (
+                            <option value={uniqueValue} key={uniqueValue}>
+                              {uniqueValue}
+                            </option>
+                          ))}
+                      </select>
+
+                      <hr />
+                      <label htmlFor="">{product.variants[0].variant}</label>
+                      <select onClick={handelChange} id="">
+                        <option value="">Choose option</option>
+                        {product?.variants
+                          ?.filter((doc) => doc.attributeValue === varian)
+                          .map((filteredVariant) => (
+                            <option
+                              value={filteredVariant.price}
+                              key={filteredVariant.variantValue}
+                            >
+                              {filteredVariant.variantValue}
+                            </option>
+                          ))}
+                      </select>
                     </div>
                   </div>
                   <div>
@@ -173,11 +212,14 @@ const ProductDetails = () => {
                     <div className="clear_button">
                       <a onClick={() => setVisibleTop(false)}>CLEAR</a>
                     </div>
-
-                    {visibleTop ? (
+                    <div>
+                      {!showVariantPrice? formatter.format(product.variants[0].price) :formatter.format(showVariantPrice)}
+                    </div>
+                    {/* {visibleTop ? (
                       <div>
                         <div className="show" style={{ fontSize: "16px" }}>
-                          {product?.variants && product.variants[0]?.description ? (
+                          {product?.variants &&
+                          product.variants[0]?.description ? (
                             <div
                               dangerouslySetInnerHTML={{
                                 __html: num
@@ -191,12 +233,12 @@ const ProductDetails = () => {
                         </div>
 
                         <p className="pro_price">
-                          {product?.variants && product.variants[num]?.price
-                            ? formatter.format(product.variants[num].price)
-                            : formatter.format(num.price)}
+                          {product?.variants && product.variants[0]?.price
+                            ? formatter.format(product.variants[0].price)
+                            : formatter.format(showVariantPrice)}
                         </p>
                       </div>
-                    ) : null}
+                    ) : null} */}
                   </div>
                   <div className="cart_sec">
                     <div className="sec_verii">
@@ -244,16 +286,13 @@ const ProductDetails = () => {
                       Buy Now
                     </button>
                   </div>
-                  
-
-                
                 </div>
               </div>
             </div>
           </div>
           <Tab description={product?.description} id={product?._id} />
         </section>
-        </div>
+      </div>
     </>
   );
 };
