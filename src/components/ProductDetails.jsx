@@ -20,7 +20,7 @@ const ProductDetails = () => {
   const [num, setNum] = useState(0);
   const cart = useSelector((state) => state.cart);
   const [varian, setVarian] = useState("");
-  const [showVariantPrice,setShowVariantPrice] = useState("")
+  const [showVariantPrice, setShowVariantPrice] = useState("");
   console.log(product);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const ProductDetails = () => {
       setPreLoader(false);
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        navigate('/404'); // Redirect to your custom 404 page
+        navigate("/404"); // Redirect to your custom 404 page
       } else {
         console.log(error);
         // Handle other errors if needed
@@ -55,6 +55,10 @@ const ProductDetails = () => {
   const selectVariant = (e) => {
     setVarian(e.target.value);
   };
+
+  const showPrice = product.variants?.find(
+    (doc) => doc.attributeValue === varian
+  );
 
   const addProduct = () => {
     let newItem = {
@@ -166,7 +170,7 @@ const ProductDetails = () => {
 
                 <div>
                   <div className="veri-details">
-                    <p c>{product?.name}</p>
+                    <p>{product?.name}</p>
                     <div className="pro_ver">
                       {/* {product?.variants?.map((doc, i) => (
                         <span
@@ -180,7 +184,7 @@ const ProductDetails = () => {
                       ))} */}
                       <label htmlFor="">{product.variants[0].attribute}</label>
                       <select onClick={selectVariant}>
-                      <option value="">Choose option</option>
+                        <option value="">Choose option</option>
                         {product?.variants
                           ?.map((doc) => doc.attributeValue)
                           ?.filter(
@@ -194,21 +198,27 @@ const ProductDetails = () => {
                           ))}
                       </select>
 
-                      <hr />
-                      <label htmlFor="">{product.variants[0].variant}</label>
-                      <select onClick={handelChange} id="">
-                        <option value="">Choose option</option>
-                        {product?.variants
-                          ?.filter((doc) => doc.attributeValue === varian)
-                          .map((filteredVariant) => (
-                            <option
-                              value={filteredVariant.price}
-                              key={filteredVariant.variantValue}
-                            >
-                              {filteredVariant.variantValue}
-                            </option>
-                          ))}
-                      </select>
+                      {product.variants[0].variant === "" ? null : (
+                        <>
+                          <hr />
+                          <label htmlFor="">
+                            {product.variants[0].variant}
+                          </label>
+                          <select onClick={handelChange} id="">
+                            <option value="">Choose option</option>
+                            {product?.variants
+                              ?.filter((doc) => doc.attributeValue === varian)
+                              .map((filteredVariant) => (
+                                <option
+                                  value={filteredVariant.price}
+                                  key={filteredVariant.variantValue}
+                                >
+                                  {filteredVariant.variantValue}
+                                </option>
+                              ))}
+                          </select>
+                        </>
+                      )}
                     </div>
                   </div>
                   <div>
@@ -217,9 +227,20 @@ const ProductDetails = () => {
                     <div className="clear_button">
                       <a onClick={() => setVisibleTop(false)}>CLEAR</a>
                     </div>
-                    <div>
-                      {!showVariantPrice? formatter.format(product.variants[0].price) :formatter.format(showVariantPrice)}
-                    </div>
+                    {product.variants[0].variant === "" ? (
+                      <div>
+                        {!showPrice?.price
+                          ? formatter.format(product.variants[0].price)
+                          : formatter.format(showPrice.price)}
+                      </div>
+                    ) : (
+                      <div>
+                        {!showVariantPrice
+                          ? formatter.format(product.variants[0].price)
+                          : formatter.format(showVariantPrice)}
+                      </div>
+                    )}
+
                     {/* {visibleTop ? (
                       <div>
                         <div className="show" style={{ fontSize: "16px" }}>

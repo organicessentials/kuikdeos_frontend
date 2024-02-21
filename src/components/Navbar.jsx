@@ -273,9 +273,9 @@ const Navbar = () => {
                       <li>
                         <Link to="/my-account/orders">Orders</Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link to="/my-account/downloads">Downloads</Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link to="/my-account/edit-address">Addresses</Link>
                       </li>
