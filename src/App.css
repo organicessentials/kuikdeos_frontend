@@ -98,6 +98,12 @@ a.explor img {
   align-items: center;
   column-gap: 59px;
 }
+.dropdown-content li svg {
+  float: left;
+  margin: 11px 0px 0 0;
+  width: 32px;
+  height: 32px;
+}
 .about_content h2 {
   color: #17414F;
   font-size: 51px;
