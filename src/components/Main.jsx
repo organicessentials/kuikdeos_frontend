@@ -52,6 +52,7 @@ import OrderComplate from "./OrderComplate";
 import Faqs from "./Faqs";
 import GiftCard from "./GiftCard";
 import Payment from "./Payment";
+import PageNotFound from "./PageNotFound";
 
 
 
@@ -64,6 +65,7 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<PublicRoute><Home /></PublicRoute>} />
         <Route path="/thank-you_/" element={<Thanku />} />
+        <Route path="*" element={<PageNotFound />}/>
         <Route path="/order-received" element={<OrderComplate />} />
         <Route path="/payment-link" element={<UserRoute><Payment /></UserRoute>} />
         <Route path="/login" element={<Login />} />

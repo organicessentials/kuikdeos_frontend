@@ -39,7 +39,9 @@ const ProductDetails = () => {
       setProduct(result.data);
       setPreLoader(false);
     } catch (error) {
-      console.log(error);
+      if(error.response.status===400){
+         navigate("/404")
+      }
     }
   };
 
