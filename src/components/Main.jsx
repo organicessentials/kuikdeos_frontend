@@ -53,6 +53,7 @@ import Faqs from "./Faqs";
 import GiftCard from "./GiftCard";
 import Payment from "./Payment";
 import PageNotFound from "./PageNotFound";
+import PaymentBtc from "./PaymentBtc";
 
 
 
@@ -75,6 +76,7 @@ const Main = () => {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/checkout" element={<UserRoute><Checkout/></UserRoute>} />
         <Route path="/giftcard" element={<PublicRoute><GiftCard /></PublicRoute>}/>
+        <Route path="/payment-btc" element={<PublicRoute><PaymentBtc /></PublicRoute>}/>
         <Route path="/categories" element={<Categories />} />
         <Route path="/organic-nutrients-for-brain-health-a-comprehensive-guide" element={<OrganicBlog />} />
         <Route path='/about-us' element={<About_Us/>}/>

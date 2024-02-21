@@ -39,8 +39,11 @@ const ProductDetails = () => {
       setProduct(result.data);
       setPreLoader(false);
     } catch (error) {
-      if(error.response.status===400){
-         navigate("/404")
+      if (error.response && error.response.status === 404) {
+        navigate('/404'); // Redirect to your custom 404 page
+      } else {
+        console.log(error);
+        // Handle other errors if needed
       }
     }
   };

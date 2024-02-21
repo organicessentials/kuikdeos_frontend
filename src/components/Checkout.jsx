@@ -35,6 +35,7 @@ const Checkout = () => {
   const [open, setOpen] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const [couponMessage, setCouponMessage] = useState("");
+  const [selectCurrency,setSelectCurrency] = useState("")
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -281,6 +282,27 @@ const Checkout = () => {
           dispatch(clearCart());
         }
         if (num === "btc") {
+          axios.post(`${config}/api/auth/create-transaction-coin`, {
+                  currency1: "USD",
+                  currency2:selectCurrency?selectCurrency: "BTC",
+                  amount: order.totalPrice,
+                  buyer_email: order.email,
+                  item_name: order.userName,
+                })
+                .then((result) => {
+                  dispatch(clearCart());
+                  navigate("/payment-btc", {
+                    state: {
+                      pay: result.data.transaction,
+                      billing: data,
+                      shipping: shipping,
+                      order: order,
+                    },
+                  });
+                })
+                .catch((err) => {
+                  alert(err.message);
+                });
         }
         if (num === "payPal") {
           window.open(
