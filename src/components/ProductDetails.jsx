@@ -60,10 +60,12 @@ const ProductDetails = () => {
     (doc) => doc.attributeValue === varian
   );
 
+  let price = showVariantPrice? showVariantPrice:showPrice?.price
+
   const addProduct = () => {
     let newItem = {
       name: product.name,
-      price: showVariantPrice ? showVariantPrice : product.variants[0].price,
+      price: price ? price : product.variants[0].price,
       id: product._id,
       image: product.image,
     };
@@ -82,7 +84,7 @@ const ProductDetails = () => {
   const buyProduct = () => {
     let newItem = {
       name: product.name,
-      price: showVariantPrice ? showVariantPrice : product.variants[0].price,
+      price: price ? price: product.variants[0].price,
       id: product._id,
       image: product.image,
     };

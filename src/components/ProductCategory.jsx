@@ -11,6 +11,8 @@ const ProductCategory = () => {
   const { params } = useParams();
   const [products, setProducts] = useState([])
 
+  console.log(products);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -29,6 +31,7 @@ const ProductCategory = () => {
     const catdata =async () => {
       try {
         const result = await axios.get(`${config}/api/auth/show/products/${capitalizedParams}`)
+        console.log(result);
         setProducts(result.data)
       } catch (error) {
         
@@ -63,9 +66,7 @@ const ProductCategory = () => {
       </div>
       <div className='container_sec'>
         <div className="products">
-          {products
-            .filter((doc) => doc.category === params)
-            .map((doc) => (
+          {products.map((doc) => (
               <div key={doc._id} onClick={() => nextPage(doc)} className="pro_details">
                 <div className="pro_img">
                   <img src={doc.image} alt={doc.name} />
