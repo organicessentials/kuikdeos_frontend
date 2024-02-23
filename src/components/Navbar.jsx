@@ -91,7 +91,7 @@ const Navbar = () => {
                 </li>
                 <li className="dropdown">
                   <Link>Store</Link>
-                  <ul class="dropdown-content shop_menu">
+                  <ul class="dropdown-content">
                     {categories.map((doc)=>(
                       <li>
                       <ArrowRightIcon />

@@ -184,6 +184,7 @@ const ProductDetails = () => {
                           {doc.attributeValue}
                         </span>
                       ))} */}
+                      <div className="option_co">
                       <label htmlFor="">{product.variants[0].attribute}</label>
                       <select onClick={selectVariant}>
                         <option value="">Choose option</option>
@@ -199,10 +200,11 @@ const ProductDetails = () => {
                             </option>
                           ))}
                       </select>
-
+                      </div>
                       {product.variants[0].variant === "" ? null : (
                         <>
                           <hr />
+                          <div className="option_co">
                           <label htmlFor="">
                             {product.variants[0].variant}
                           </label>
@@ -219,6 +221,7 @@ const ProductDetails = () => {
                                 </option>
                               ))}
                           </select>
+                          </div>
                         </>
                       )}
                     </div>
@@ -230,13 +233,13 @@ const ProductDetails = () => {
                       <a onClick={() => setVisibleTop(false)}>CLEAR</a>
                     </div>
                     {product.variants[0].variant === "" ? (
-                      <div>
+                      <div className="pro_price">
                         {!showPrice?.price
                           ? formatter.format(product.variants[0].price)
                           : formatter.format(showPrice.price)}
                       </div>
                     ) : (
-                      <div>
+                      <div className="pro_price">
                         {!showVariantPrice
                           ? formatter.format(product.variants[0].price)
                           : formatter.format(showVariantPrice)}

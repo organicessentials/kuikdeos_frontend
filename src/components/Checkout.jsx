@@ -787,7 +787,7 @@ const Checkout = () => {
                       <td>Shipping</td>
                       <td className="method" style={{ textAlign: "right" }}>
                         {cart.cartTotalAmount < 150
-                          ? `Free Shipping Over USD 150: ${formatter.format(
+                          ? `Express delivery From India/SG (7-21 days): ${formatter.format(
                               15
                             )}`
                           : "Free Express Shipping (From India/SG)"}

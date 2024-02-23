@@ -661,7 +661,8 @@ span.fea_shodes {
 }
 
 .pro_img img {
-  width: 91%;
+  height: 221px;
+  width: auto;
 }
 
 .pro_img {
@@ -1825,14 +1826,22 @@ span.choose {
   flex-direction: column;
   align-items: center;
 }
+.badge_kd img {
+  width: 111px;
+}
+.badge_kd {
+  position: fixed;
+  top: 45%;
+  z-index: 999999;
+}
 .pro_price {
   font-size: 19px;
-  color: #11562f;
+  color: #17414f;
   font-weight: 600;
 }
 .pro_price {
   font-size: 26px;
-  color: #11562f;
+  color: #17414f;
   font-weight: 600;
   margin: 12px 0 0 0;
 }
@@ -2220,8 +2229,20 @@ span.MuiTabs-indicator.css-1aquho2-MuiTabs-indicator {
   text-align: left;
   width: 100%;
   border: none;
-  font-family: "Elsie",sans-serif;
-  color: #5EA550;
+  color: #17414f;
+}
+select.coin_dropdown {
+  width: 100%;
+  float: left;
+  padding: 7px 8px;
+  font-family: 'Jost';
+  font-size: 16px;
+  border-radius: 8px;
+  margin: 8px 0 8px 0;
+}
+input.coupon_input {
+  padding: 4px 10px !important;
+  height: 45px;
 }
 .amoung th {
   text-align: left;
@@ -2312,6 +2333,10 @@ button.add_cart-account {padding: 10px 18px !important;}
 
 /* Styles for devices with a screen width between 901px and 1200px */
 @media screen and (min-width: 901px) and (max-width: 1200px) {
+  .pro_img img {
+    height: auto;
+    width: auto;
+  }
   .container_banner {width: 90% !important;}
   .pro_details {width: 22% !important;}
   .ser_1:nth-child(01), .ser_1:nth-child(02), .ser_1:nth-child(03) {margin: 0px 0 0 0 !important;}
@@ -2326,12 +2351,16 @@ button.add_cart-account {padding: 10px 18px !important;}
   width: 100%;
 }
   .foot_left {
-    width: 69%;
+    width: 100%;
     float: left;
     margin: 0 18px 0 0;
 }
 }
 @media screen and (min-width:300px) and (max-width:600px) {
+  .pro_img img {
+    height: auto;
+    width: auto;
+  }
   .container_banner {
     width: 90% !important;
     margin: 0 auto;
@@ -3418,7 +3447,7 @@ input.coupon_input {
   margin: 11px 0 0 0;
 }
 button.submit_button {
-  background: #11562f;
+  background: #2d3f59;
   padding: 10px 35px;
   color: #fff;
   border-radius: 31px;
@@ -4027,8 +4056,33 @@ li.se_icon:hover .search {
 input{
  font-family: "Jost", sans-serif;
 }
+span.with_10 {
+  width: 100%;
+  float: left;
+  margin: 7px 0;
+  font-size: 17px;
+}
+.option_co {
+  width: 50%;
+}
+
+.option_co label {
+  font-size: 17px;
+  text-transform: capitalize;
+  width: 100%;
+  float: left;
+}
+
+.option_co select {
+  width: 100%;
+  padding: 6px 7px;
+  border-radius: 9px;
+  font-family: jost;
+  font-size: 16px;
+  margin: 7px 0 0 0;
+}
 button.submit_button {
-  background: #11562f;
+  background: #2d3f59;
   padding: 10px 35px;
   color: #fff;
   border-radius: 31px;
