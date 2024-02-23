@@ -12,6 +12,7 @@ import ser_6 from "../assets/ser_6.svg";
 import EastIcon from '@mui/icons-material/East';
 
 import "./Banner.css";
+import { Link } from "react-router-dom";
 const Banner = () => {
   return (
     <>
@@ -22,7 +23,7 @@ const Banner = () => {
         <div className="cloumn_flex content_ban">
             <span>Prescription Only Medicine</span>
             <h3>Unlock Radiance: Essential Vitamins and Minerals for Skin Health</h3>
-            <a href="" className="shop_bann">Shop Now <EastIcon /></a>
+            <Link to="/product-category/skin-care/" className="shop_bann">Shop Now <EastIcon /></Link>
         </div>
         <div className="cloumn_flex content_image">
             <img src={skin_car} />
@@ -33,7 +34,7 @@ const Banner = () => {
                     <img src={Frame} />
                 </div>  
                 <div className="pr_names"> 
-                <h4><a href="">A Ret Gel</a></h4>
+                <h4><Link to="/product/a-ret-gel-tretinoin">A Ret Gel</Link></h4>
                   <span>Enhanced Skin Health: A Ret Gel with Extra Nutrient Boost</span>
                 </div>
             </div>
@@ -42,7 +43,7 @@ const Banner = () => {
                     <img src={Frame2} />
                 </div>  
                 <div className="pr_names"> 
-                <h4><a href="">Bimat 3 ml</a></h4>
+                <h4><Link to="/product/bimat-3-ml-0.03-percent/">Bimat 3 ml</Link></h4>
                   <span>Enhancing Nutrient Intake: Boosting Vitamins and Minerals with Bimat 3ml</span>
                 </div>
             </div>
@@ -51,7 +52,7 @@ const Banner = () => {
                     <img src={Frame3} />
                 </div>  
                 <div className="pr_names"> 
-                <h4><a href="">Melalite Forte</a></h4>
+                <h4><Link to="/product/melalite-forte-4-percent-30-gm-cream">Melalite Forte</Link></h4>
                   <span>Enhancing Nutrient Intake: The Power of Melalite Forte</span>
                 </div>
             </div>

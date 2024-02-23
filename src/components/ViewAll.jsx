@@ -12,42 +12,33 @@ const ViewAll = () => {
   return (
     <>
     <div className="container_banner">
-      <div className="collectin_seci">
-        <div className="collect_sec colle_1">
+    <div className="collect_sec colle_1">
         <span className="span_coll">Popular Categories</span>
         <h2>COLLECTIONS</h2>
         <span className="spn_de">Eliminate the hassle of clinic waits, pharmacy lines, and uncomfortable discussions.</span>
         </div>
+      <div className="collectin_seci">
+       
         <div className="collect_sec colle_2">
        
-        <h2>Acne Care</h2>
-        <span className="spn_an">SEE MORE</span>
+        <h2><Link to="/product-category/acne-care">Acne Care</Link></h2>
+        <span className="spn_an"><Link to="/product-category/acne-care">SEE MORE</Link></span>
         
         </div>
         <div className="collect_sec colle_3">
   
-        <h2>Beauty and Skin Care</h2>
-        <span className="spn_an">SEE MORE</span>
+        <h2><Link to="/product-category/skin-care">Beauty and Skin Care</Link></h2>
+        <span className="spn_an"><Link to="/product-category/skin-care">SEE MORE</Link></span>
 
         </div>
         <div className="collect_sec colle_4">
      
-        <h2>Painkillers</h2>
-        <span className="spn_an">SEE MORE</span>
+        <h2><Link to="/product-category/eye-care">Eye Care</Link></h2>
+        <span className="spn_an"><Link to="/product-category/eye-care">SEE MORE</Link></span>
 
         </div>
-        <div className="collect_sec colle_5">
-       
-        <h2>Weight Control</h2>
-        <span className="spn_an">SEE MORE</span>
         
-        </div>
-        <div className="collect_sec colle_6">
- 
-        <h2>ED Pills</h2>
-        <span className="spn_an">SEE MORE</span>
-   
-        </div>
+       
         </div>
     </div>
 </>

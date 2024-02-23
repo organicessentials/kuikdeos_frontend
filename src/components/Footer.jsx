@@ -1,12 +1,18 @@
 import React from "react";
 import footer_logo from "../assets/logo_foter.svg";
 import payment_kd from "../assets/payment_kd.png";
+import badge_tmr from "../assets/badge_tmr.svg";
+
 
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <>
+    <div class="badge_kd">
+	<a href="https://techmorereview.com/companies/kuikdose/">
+	<img src={badge_tmr} /></a>
+</div>
       <div className="footer">
         <div className="container_foot">
           <div className="foot_left">

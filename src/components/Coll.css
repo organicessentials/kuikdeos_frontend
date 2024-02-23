@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   column-gap: 47px;
   width: 100%;
-  margin: 47px 0 0 0;
+  margin: 0px 0 0 0;
 }
 
 .collect_sec {
@@ -15,7 +15,7 @@
   justify-content: space-between;
   background-size: cover;
   padding: 24px;
-  margin: 25px 0;
+  margin: 5px 0;
   border-radius: 21px;
 }
 .collect_sec h2 {
@@ -52,7 +52,7 @@ span.spn_de {
   background-color: #e2f5fb;
 }
 .colle_4 {
-  background: url(/src/assets/pain.png);
+  background: url(/src/assets/eye.png);
   background-size: 95%;
   background-position: 100% 100%;
   background-repeat: no-repeat;

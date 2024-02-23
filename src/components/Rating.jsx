@@ -1,6 +1,7 @@
 import React from "react";
 import picture from "../assets/Picture.png"
 import EastIcon from '@mui/icons-material/East';
+import { Link } from "react-router-dom";
 
 const Rating = () => {
   return (
@@ -15,7 +16,7 @@ const Rating = () => {
             <span className="about_span">ABOUT Kuikdose</span>
             <h2>Your Reliable Partner in Health</h2>
             <p>Welcome to KuikDose, your one-stop destination for all your healthcare needs. At KuikDose, we are passionate about providing you with a seamless online shopping experience for medicines and healthcare products. Our commitment to quality, convenience, and care sets us apart as a trusted online medicine store.</p>
-            <a href="">About us <EastIcon /></a>
+            <Link to="/about-us">About us <EastIcon /></Link>
             </div>
           </div>
       
