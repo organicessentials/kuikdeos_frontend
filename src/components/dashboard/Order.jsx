@@ -93,7 +93,7 @@ const Order = () => {
         <div className="container_banner">
           <h1>Orders</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Orders</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Orders</span></span>
         </div>
       </div>
       <div className="my_account">

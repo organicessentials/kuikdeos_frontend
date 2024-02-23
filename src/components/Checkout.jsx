@@ -387,7 +387,7 @@ const Checkout = () => {
           <h1>Checkout</h1>
 
           <span className="bredcurn_link">
-            <a class="bread-crumb-e" href="https://kuikdose.com">
+            <a class="bread-crumb-e" href="https://kuikdose.io">
               Home
             </a>{" "}
             / <span class="bread-crumb-e">Checkout</span>

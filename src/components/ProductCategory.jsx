@@ -61,7 +61,7 @@ const ProductCategory = () => {
         <div className="container_banner">
           <h1>Category: {capitalizedParams}</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">{capitalizedParams}</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">{capitalizedParams}</span></span>
         </div>
       </div>
       <div className='container_sec'>
@@ -77,14 +77,14 @@ const ProductCategory = () => {
                     {doc.name}
                   </span>
                   <span className="p_price">
-                    {doc?.variants && doc.variants[0] && (
+                    
                       <h4>
-                        {formatter.format(doc.variants[0]?.price)} –
+                        {formatter.format(doc.firstVariantPrice)} –
                         {formatter.format(
-                          doc.variants[doc.variants.length - 1]?.price
+                          doc.lastVariantPrice
                         )}
                       </h4>
-                    )}
+                 
                   </span>
                 </div>
               </div>

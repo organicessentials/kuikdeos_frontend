@@ -128,7 +128,7 @@ const Register = () => {
         <div className="container_banner">
           <h1>Affiliate Area</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Affiliate Area</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Affiliate Area</span></span>
         </div>
       </div>
     <Alert text={message.text} severity={message.severity}/>

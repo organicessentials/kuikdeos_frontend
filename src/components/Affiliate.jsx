@@ -38,7 +38,7 @@ const Affiliate = () => {
         <div className="container_banner">
           <h1>Affiliate Center</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Affiliate Center</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Affiliate Center</span></span>
         </div>
       </div>
       <div className="affili_sec">
@@ -56,7 +56,7 @@ const Affiliate = () => {
                 <div className="affilia_cont1">
                 <h2>Weekly Payout!</h2>
                 <span>We payout every week on Friday’s so you don’t have to wait for a month to receive what you have earned!</span>
-                <span>Queries? <a href="mailto:support@kuikdose.com">support@kuikdose.com</a></span>
+                <span>Queries? <a href="mailto:support@kuikdose.io">support@kuikdose.io</a></span>
                 </div>
             </div>
 

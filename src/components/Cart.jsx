@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { decodeToken } from 'react-jwt';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import paypal from "../assets/paypal.png";
-import stripe from "../assets/stripe1.png";
-import sezzle from "../assets/sezzle.png";
-import echeck from "../assets/echeck1.png";
 import { addToCart, cartDecrementCart, getTotals, removeFromCart } from '../features/cartSlice';
 import { Link } from 'react-router-dom';
 import Toast from './Toast';
@@ -137,7 +133,7 @@ return (
         <div className="container_banner">
           <h1>Cart</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Cart</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Cart</span></span>
         </div>
       </div>
         <div className="cart_page">

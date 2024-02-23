@@ -27,7 +27,7 @@ const About_Us = () => {
         <div className="container_banner">
           <h1>About Us</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">About Us</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">About Us</span></span>
         </div>
       </div>
       <div className="abot_sec">
