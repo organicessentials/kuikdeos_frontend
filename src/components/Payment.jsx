@@ -24,12 +24,13 @@ const Payment = () => {
 
   const currentDate = new Date()
   return (
-    <div className="container">
+    <div className="container_banner">
       <div className="thxns_item">
-        <p >
+        <p className="label_tank">
           Thank you. Your order has been received.
         </p>
         <div className="details_user">
+          <ul>
           <li className="li_details">
             Order number: <strong>{data.order.orderId}</strong>
           </li>
@@ -49,27 +50,26 @@ const Payment = () => {
               </span>
             </strong>
           </li>
-        </div>
-        <div>
-          <div >
+          <li>
+          <div>
             Payment method:
-          </div>
+      
           <strong>
               Other Methods (Zelle, Visa &amp; MasterCard Credit Cards, ACH
               Payments, Bill Pay, PayID, BPAY, Faster Payments, iDeal, SEPA
               IBAN) with KYC
             </strong>
           </div>
-        <div className="order_status">
-          <div>
-            <li className="li_details">
+          </li>
+          <li className="li_details">
               Order Status :
               <strong>
-                pending
+                Pending
               </strong>
             </li>
-          </div>
+          </ul>
         </div>
+      
         <section >
           <div style={{ background: "#fbf1ca", padding: 25, fontSize: 16 }}>
             <p>
