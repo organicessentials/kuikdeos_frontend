@@ -106,10 +106,10 @@ const Register = () => {
       });
   };
 
-  //let key = "6LcYAOcoAAAAANJ33iaFV4o1B-h36tVQtFlnqnZt"
+  let key = "6LcYAOcoAAAAANJ33iaFV4o1B-h36tVQtFlnqnZt"
 
   //  live key
-  let key = "6LdywEYpAAAAAJheBZaa9VjoivH3WF92fPDx07XK"
+  //let key = "6LdywEYpAAAAAJheBZaa9VjoivH3WF92fPDx07XK"
   
   const handleCaptchaVerify = (response) => {
     if (response) {
