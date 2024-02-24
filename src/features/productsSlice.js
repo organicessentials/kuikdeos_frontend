@@ -7,7 +7,7 @@ import config from "../config";
 const initialState = {
   items: [],
   status: null,
-  loading: false, 
+  loading: true, 
   currentPage: 1,
 };
 
@@ -35,7 +35,7 @@ const productsSlice = createSlice({
         state.loading = true;
       })
       .addCase(productsFetch.fulfilled, (state, action) => {
-        state.items = [...state.items, ...action.payload];
+        state.items = action.payload;  // Replace the line here
         state.status = "success";
         state.loading = false;
         state.currentPage += 1;

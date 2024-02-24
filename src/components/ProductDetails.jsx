@@ -7,7 +7,7 @@ import Toast from "./Toast";
 import axios from "axios";
 import config from "../config";
 import { Helmet } from "react-helmet";
-import gifLoader from "../assets/Loader-1.gif";
+import gifLoader from "../assets/loader.gif";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -31,6 +31,10 @@ const ProductDetails = () => {
     });
   }, []);
 
+  useEffect(() => {
+    getData();
+  }, [params?.id]);
+
   const getData = async () => {
     try {
       const result = await axios.get(
@@ -47,10 +51,6 @@ const ProductDetails = () => {
       }
     }
   };
-
-  useEffect(() => {
-    getData();
-  }, [params?.id]);
 
   const selectVariant = (e) => {
     setVarian(e.target.value);
@@ -109,7 +109,7 @@ const ProductDetails = () => {
   if (preLoader) {
     return (
       <div className="loading_layout">
-        <img src={gifLoader} className="preloader" alt="logo" />
+        <img style={{width:"60px",height:"60px"}} src={gifLoader} className="preloader" alt="logo" />
       </div>
     );
   }

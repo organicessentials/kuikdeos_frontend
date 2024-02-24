@@ -43,7 +43,7 @@ const Banner = () => {
                     <img src={Frame2} />
                 </div>  
                 <div className="pr_names"> 
-                <h4><Link to="/product/bimat-3-ml-0.03-percent/">Bimat 3 ml</Link></h4>
+                <h4><Link to="/product/bimat-3-ml-0.03">Bimat 3 ml</Link></h4>
                   <span>Enhancing Nutrient Intake: Boosting Vitamins and Minerals with Bimat 3ml</span>
                 </div>
             </div>

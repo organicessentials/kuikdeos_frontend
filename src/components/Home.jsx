@@ -23,16 +23,11 @@ const Home = () => {
 
   return (
     <>
-      
-        
-        <Banner />
+      <Banner />
       <ViewAll />
-
       <Products />
       <Rating />
       <Reviews />
-
-      
     </>
   );
 };

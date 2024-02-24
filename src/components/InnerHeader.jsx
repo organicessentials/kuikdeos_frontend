@@ -87,7 +87,7 @@ const InnerHeader = () => {
         Finest Indian Organics At Your Doorstep! Free Shipping Over USD 35.
         <span class="arrow">&gt;</span>
       </div>
-      <div className="storeopen inner_col"><span>support@organicessentialshub.com</span></div>
+      <div className="storeopen inner_col"><span>support@kuikdose.io</span></div>
       <div className="storeopen inner_col">
         <img color="" src={bookmark} alt="" />
         <span>Bookmark</span>
