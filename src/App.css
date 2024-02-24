@@ -4381,3 +4381,24 @@ span.hours_minutes {
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv {
   fill: #5c5c5c !important;
 }
+
+p.label_tank {
+  text-align: center;
+  font-size: 30px;
+  margin: 29px 0 0 0;
+  font-weight: 700;
+  color: #17414f;
+}
+
+.details_user ul {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 27px;
+  list-style: none;
+  font-size: 17px;
+  margin: 14px 0 16px 0;
+  justify-content: center;
+}
+.details_user ul li {
+  padding: 6px 0;
+}
