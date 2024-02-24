@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
          
           <div className="copytext">
-          <span>Copyright 2024, Kuikdose.com</span>
+          <span>Copyright 2024, kuikdose.io</span>
           <img src={payment_kd} />
           </div>
         </div>

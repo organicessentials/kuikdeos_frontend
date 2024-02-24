@@ -28,7 +28,7 @@ const Faqs = () => {
         <div className="container_banner">
           <h1>Help Center</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Help Center</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Help Center</span></span>
         </div>
       </div>
       <div className="faqs_sec">
@@ -116,7 +116,7 @@ const Faqs = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography className="content-faqs">
-          Please contact our customer support team at support@kuikdose.com any time and we’ll be happy to answer your questions! We’re online 24×7!
+          Please contact our customer support team at support@kuikdose.io any time and we’ll be happy to answer your questions! We’re online 24×7!
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -131,7 +131,7 @@ const Faqs = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography className="content-faqs">
-          For any other questions, please contact us at <span><a href="mailto:support@kuikdose.com">support@kuikdose.com</a>. </span>We’re online 24×7! 
+          For any other questions, please contact us at <span><a href="mailto:support@kuikdose.io">support@kuikdose.io</a>. </span>We’re online 24×7! 
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -164,7 +164,7 @@ const Faqs = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography className="content-faqs">
-          We ship to most worldwide countries. Please check our shipping & payment page or contact customer support at support@kuikdose.com to find out the available delivery options for your region.
+          We ship to most worldwide countries. Please check our shipping & payment page or contact customer support at support@kuikdose.io to find out the available delivery options for your region.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -398,7 +398,7 @@ const Faqs = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography className="content-faqs">
-          For any other questions, please contact us at <span><a href="mailto:support@kuikdose.com">support@kuikdose.com</a>. </span>We’re online 24×7! 
+          For any other questions, please contact us at <span><a href="mailto:support@kuikdose.io">support@kuikdose.io</a>. </span>We’re online 24×7! 
           </Typography>
         </AccordionDetails>
       </Accordion>

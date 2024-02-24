@@ -29,7 +29,7 @@ const MyAccount = () => {
         <div className="container_banner">
           <h1>My Account</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">My Account</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">My Account</span></span>
         </div>
       </div>
       <div className="my_account">

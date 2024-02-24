@@ -106,10 +106,10 @@ const Register = () => {
       });
   };
 
-  //let key = "6LcYAOcoAAAAANJ33iaFV4o1B-h36tVQtFlnqnZt"
+  let key = "6LcYAOcoAAAAANJ33iaFV4o1B-h36tVQtFlnqnZt"
 
   //  live key
-  let key = "6LdywEYpAAAAAJheBZaa9VjoivH3WF92fPDx07XK"
+  //let key = "6LdywEYpAAAAAJheBZaa9VjoivH3WF92fPDx07XK"
   
   const handleCaptchaVerify = (response) => {
     if (response) {
@@ -128,7 +128,7 @@ const Register = () => {
         <div className="container_banner">
           <h1>Affiliate Area</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Affiliate Area</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Affiliate Area</span></span>
         </div>
       </div>
     <Alert text={message.text} severity={message.severity}/>

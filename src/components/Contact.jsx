@@ -95,7 +95,7 @@ const Contact = () => {
         <div className="container_banner">
           <h1>Contact Us</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Contact Us</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Contact Us</span></span>
         </div>
       </div>
     
@@ -105,7 +105,7 @@ const Contact = () => {
             <span className="titl_con">
             Get In touch  
             </span>
-            <span className="reach_con">You can reach us at: <a href="mailto:support@kuikdose.com">support@kuikdose.com</a>
+            <span className="reach_con">You can reach us at: <a href="mailto:support@kuikdose.io">support@kuikdose.io</a>
 </span>
           </div>
           <div className="form_grou">

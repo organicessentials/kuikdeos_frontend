@@ -22,7 +22,7 @@ const Privacy = () => {
         <div className="container_banner">
           <h1>Privacy Policy</h1>
 
-          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.com">Home</a> / <span class="bread-crumb-e">Privacy Policy</span></span>
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Privacy Policy</span></span>
         </div>
       </div>
   <div className="policy_page"> 
