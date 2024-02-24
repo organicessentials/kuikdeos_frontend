@@ -5,13 +5,16 @@ import { productsFetch } from '../features/productsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {Helmet} from "react-helmet";
 import config from '../config';
+import Loader from "../assets/loader.gif";
 import axios from 'axios';
+
+
 const ProductCategory = () => {
+
   const navigate = useNavigate();
   const { params } = useParams();
   const [products, setProducts] = useState([])
-
-  console.log(products);
+  const [loading,setLoading] = useState(true)
 
   useEffect(() => {
     window.scrollTo({
@@ -33,6 +36,7 @@ const ProductCategory = () => {
         const result = await axios.get(`${config}/api/auth/show/products/${capitalizedParams}`)
         console.log(result);
         setProducts(result.data)
+        setLoading(false)
       } catch (error) {
         
       }
@@ -50,6 +54,14 @@ const ProductCategory = () => {
   const nextPage = (doc) => {
     navigate(`/product/${doc.slug}`, { state: doc });
   };
+
+  if (loading) {
+    return (
+      <div className="loading_layout">
+      <img style={{width:"60px",height:"60px"}} src={Loader} className="preloader" alt="logo" />
+      </div>
+    );
+  }
 
   return (
     <>

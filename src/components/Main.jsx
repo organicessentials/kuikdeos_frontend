@@ -54,30 +54,11 @@ import GiftCard from "./GiftCard";
 import Payment from "./Payment";
 import PageNotFound from "./PageNotFound";
 import PaymentBtc from "./PaymentBtc";
-import Loader from "../assets/loader.gif"
 
 
 
 const Main = () => {
 
-  const [loading,setLoading] = useState(true)
-
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    },5000);
-  }, [])
-  
-
-
-  if (loading) {
-    return (
-      <div className="loading_layout">
-      <img style={{width:"60px",height:"60px"}} src={Loader} className="preloader" alt="logo" />
-      </div>
-    );
-  }
 
 
   return (

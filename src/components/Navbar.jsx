@@ -95,9 +95,9 @@ const Navbar = () => {
                     {categories.map((doc)=>(
                       <li>
                       <ArrowRightIcon />
-                      <Link to={`/product-category/${doc.slug}`}>
+                      <a href={`/product-category/${doc.slug}`}>
                         <span>{doc.name}</span>
-                      </Link>
+                      </a>
                     </li>
                     ))}
                   </ul>
