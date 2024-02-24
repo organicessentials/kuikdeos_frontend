@@ -67,7 +67,7 @@ const ProductCategory = () => {
       <div className='container_sec'>
         <div className="products">
           {products.map((doc) => (
-              <div key={doc._id} onClick={() => nextPage(doc)} className="pro_details">
+              <Link to={`/product/${doc.slug}`} key={doc._id} onClick={() => nextPage(doc)} className="pro_details">
                 <div className="pro_img">
                   <img src={doc.image} alt={doc.name} />
                
@@ -87,7 +87,7 @@ const ProductCategory = () => {
                  
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
         </div>
       </div>
