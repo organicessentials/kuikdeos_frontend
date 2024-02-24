@@ -43,17 +43,20 @@ const Shop = () => {
 
     return (
         <>
-            <div className="bredcrum_org">
-                <h1>Shop</h1>
-            </div>
+              <div className="bredcrum_org">
+        <div className="container_banner">
+          <h1>Shop</h1>
+
+          <span className="bredcurn_link"><a class="bread-crumb-e" href="https://kuikdose.io">Home</a> / <span class="bread-crumb-e">Shop</span></span>
+        </div>
+      </div>
+      <div className="container_banner">
             <div className="products">
                 {products.map((doc) => (
                     <div key={doc._id} onClick={() => nextPage(doc)} className="pro_details">
                         <div className="pro_img">
                             <img src={doc.image} alt={doc.name} />
-                            <a href="#">
-                                <img src={arrow_view} alt="View" />
-                            </a>
+                          
                         </div>
                         <div className="p_det">
                             <span className="p_titl">{doc.name}</span>
@@ -70,6 +73,7 @@ const Shop = () => {
                 ))}
                 {loading && <p>Loading...</p>}
                 {!loading && products.length === 0 && <p>No products available.</p>}
+            </div>
             </div>
         </>
     );

@@ -60,7 +60,7 @@ const PaymentBtc = () => {
         </div>
       </div>
       <div className="thaxu_details">
-        <div className="">
+        <div className="comple_pay">
           <h2>To complete your order</h2>
           <div className="">
             <p>
@@ -69,7 +69,7 @@ const PaymentBtc = () => {
                 <span className="">
                   <input
                     readOnly="readonly"
-                    size={12}
+                    size={12} className="send_pay"
                     defaultValue={`${
                       data.pay.amount
                     } ${data.order.paymentMethod.toUpperCase()}`}
@@ -86,7 +86,7 @@ const PaymentBtc = () => {
               <span className="">
                 <span className="">
                   <input
-                    readOnly="readonly"
+                    readOnly="readonly" className="send_pay"
                     size={34}
                     defaultValue={data.pay.address}
                   />
@@ -97,13 +97,14 @@ const PaymentBtc = () => {
                 </span>
               </span>
             </p>
-            <div className="">
+            <div className="scan">
+              <div className="csner">
               <img
                 src={data.pay.qrcode_url}
                 title={`bitcoincash:${data.pay.address}?amount=${data.pay.amount}`}
               />
             </div>
-            <div className="">
+            <div className="csner">
               <div className="">
                 <p>
                   Awaiting payment
@@ -117,6 +118,8 @@ const PaymentBtc = () => {
                 <p>Payment complete!</p>
               </div>
             </div>
+            </div>
+
             <div className="payment_buttons">
               <div>
                 <a

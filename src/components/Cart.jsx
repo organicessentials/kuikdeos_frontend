@@ -286,7 +286,7 @@ return (
                       Proceed to checkout
                     </button>
                   </a>
-                  <Link to="/categories">
+                  <Link to="/shop">
                   <button className="shiping_button">
                     CONTINUE SHOPPING
                   </button>

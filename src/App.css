@@ -354,7 +354,7 @@ h2.main_heading {
   font-size: 16px;
 }
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
-  fill: #5c5c5c;
+  fill: #5c5c5c !important;
 }
 .link ul li a:hover {
   color: var(--dark-color);
@@ -4311,4 +4311,60 @@ button.re_order_com {
   padding: 8px 19px;
   margin: 10px -1px;
   border-radius: 4px;
+}
+
+.not_found {
+  text-align: center;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.not_found_marg a {
+  color: #fff;
+  background: #17414f;
+  box-shadow: 0 8px 10px #79636824, 0 3px 14px #0000001f;
+  transition: all .3s ease-in-out;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 30px;
+  padding: 14px 45px;
+}
+.comple_pay {
+  width: 51%;
+}
+input.send_pay {
+  width: 100%;
+  padding: 7px 12px;
+  border-radius: 9px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+.scan {
+  width: 100%;
+  float: left;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.csner p {
+  font-size: 21px;
+}
+span.hours_minutes {
+  font-size: 30px;
+  font-weight: 500;
+}
+.show_card {
+
+  font-weight: 400;
+}
+.not_found span {
+  font-size: 43px;
+  font-weight: 700;
+  float: left;
+  width: 100%;
+  margin: 0 0 48px 0;
 }
