@@ -243,7 +243,7 @@ const Checkout = () => {
       console.log(error);
     }
   };
-
+ 
   const payment = async () => {
     const requiredFields = [];
     // if (!data.apartment) requiredFields.push("Apartment");

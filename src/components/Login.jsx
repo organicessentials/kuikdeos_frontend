@@ -71,15 +71,15 @@ const Login = () => {
     
     const register = async (e) => {
       e.preventDefault();
-      // if (!isCaptchaVerified) {
-      //   setMessage({text:"Please solve Captcha correctly",severity:"error"});
-      //   window.scroll({
-      //     top: 0,
-      //     left: 0,
-      //     behavior: "smooth",
-      //   });
-      //   return;
-      // }
+      if (!isCaptchaVerified) {
+        setMessage({text:"Please solve Captcha correctly",severity:"error"});
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+        return;
+      }
       try {
         const result = await axios.post(
           `${config}/api/auth/register`,
@@ -143,10 +143,10 @@ const Login = () => {
             {visible ? <span onClick={togglePassword} class="toggle-password_register"><FontAwesomeIcon icon={faEye} /></span>:
             <span onClick={togglePassword} class="toggle-password_register"><FontAwesomeIcon icon={faEyeSlash} /></span> }
           </div>
-          {/* <ReCAPTCHA sitekey={key}
+          <ReCAPTCHA sitekey={key}
            ref={captchaRef}
             onChange={handleCaptchaVerify}
-           /> */}
+           />
           <button className="btn_btn" type="submit">REGISTER</button>
         </form>
         <div className="navigate">
@@ -183,10 +183,10 @@ const Login = () => {
             <div><input type="checkbox" /><span style={{marginLeft:"12px"}}>Remember me</span></div>
             <div><span><Link style={{color:"white",textDecoration:"none"}} to="/my-account/lost-password">Lost your password?</Link></span></div>
           </div>
-          {/* <ReCAPTCHA sitekey={key}
+          <ReCAPTCHA sitekey={key}
            ref={captchaRef}
             onChange={handleCaptchaVerify}
-           /> */}
+           />
           <button className="btn_btn" type="submit">LOG IN</button>
         </form>
         <div className="navigate">

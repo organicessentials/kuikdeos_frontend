@@ -111,6 +111,9 @@ a.explor img {
   line-height: 51px;
   margin: 25px 0;
 }
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-vubbuv {
+  fill: #5c5c5c !important;
+}
 .about_content a {
   color: #fff;
   background: #17414f;

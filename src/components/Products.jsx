@@ -41,7 +41,7 @@ const Products = () => {
           {products
             .filter((doc, index) => index < 8)
             .map((doc, index) => (
-              <div
+              <Link to={`/product/${doc.slug}`}
                 key={doc._id}
                 onClick={() => nextPage(doc)}
                 className="pro_details"
@@ -59,7 +59,7 @@ const Products = () => {
                     </h4>
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
         </div>
        

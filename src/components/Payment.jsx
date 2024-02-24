@@ -6,6 +6,7 @@ const Payment = () => {
 
   const location = useLocation();
   const data = location.state;
+  console.log(data);
   
   useEffect(() => {
     window.scrollTo({
@@ -186,19 +187,19 @@ const Payment = () => {
               <address>
               {data?.shipping?.firstName} {data?.shipping?.lastName}
                 <br />
-                {data?.shipping.apartment}
+                {data?.shipping?.apartment}
                 <br />
-                {data?.shipping.street}
+                {data?.shipping?.street}
                 <br />
-                {data?.shipping.companyName}
+                {data?.shipping?.companyName}
                 <br />
-                {data?.shipping.city}
+                {data?.shipping?.city}
                 <br />
-                {data?.shipping.state}
+                {data?.shipping?.state}
                 <br />
-                {data?.shipping.country}
+                {data?.shipping?.country}
                 <br />
-                  {data?.shipping.phone}
+                  {data?.shipping?.phone}
                 
                
                 <p >

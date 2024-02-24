@@ -30,7 +30,7 @@ const Register = () => {
     paymentEmail: "",
     note: "",
     webUrl: "",
-    domain: "https://organicessentialshub.com",
+    domain: "https://kuikdose.io",
   });
   
   useEffect(() => {
@@ -106,10 +106,10 @@ const Register = () => {
       });
   };
 
-  //let key = "6LcYAOcoAAAAANJ33iaFV4o1B-h36tVQtFlnqnZt"
+  let key = "6LcYAOcoAAAAANJ33iaFV4o1B-h36tVQtFlnqnZt"
 
   //  live key
-  let key = "6LdzFX4pAAAAACaXKNNO8sq4Cka78OnXE7WGiNeG"
+  //let key = "6LdzFX4pAAAAACaXKNNO8sq4Cka78OnXE7WGiNeG"
   
   const handleCaptchaVerify = (response) => {
     if (response) {
