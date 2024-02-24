@@ -1,5 +1,5 @@
 const config = {
-   //URL:"https://backend.organicessentialshub.com",
-   URL:"http://localhost:3009",
+   URL:"https://backend.kuikdose.io",
+   //URL:"http://localhost:3009",
 };
 export default config.URL;
