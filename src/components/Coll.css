@@ -15,7 +15,7 @@
   justify-content: space-between;
   background-size: cover;
   padding: 24px;
-  margin: 5px 0;
+  margin: 18px 0;
   border-radius: 21px;
 }
 .collect_sec h2 {
@@ -66,7 +66,13 @@ span.spn_de {
   background-color: #e2f5fb;
 }
 .colle_6 {
-  background: url(/src/assets/ed-3.png);
+  background: url(/src/assets/nootro.png);
+  background-size: 95%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #e2f5fb;
+}.colle_7 {
+  background: url(/src/assets/hair.png);
   background-size: 95%;
   background-position: 100% 100%;
   background-repeat: no-repeat;
