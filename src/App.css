@@ -663,16 +663,20 @@ span.fea_shodes {
   width: 23%;
   float: left;
   cursor: pointer;
+  background: #dddddd;
+
+  border-radius: 8px;
 }
 
 .pro_img img {
-  height: 221px;
+  height: 242px;
   width: auto;
 }
 
 .pro_img {
-  background: #fff;
+  background: #efefef;
   padding: 14px 0 19px;
+  text-align: center;
 }
 
 .pro_img a img {
@@ -693,6 +697,7 @@ span.p_titl {
   width: 100%;
   float: left;
   text-align: center;
+  padding: 14px 0;
 }
 span.p_price {
   font-size: 18px;
