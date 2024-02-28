@@ -883,7 +883,7 @@ const Checkout = () => {
                     </div>
                   </div>
                 ) : null}
-                {data?.country && selectedPayment.includes(data?.country) ? (
+                {/* {data?.country && selectedPayment.includes(data?.country) ? (
                   <div className="check_ldbfd">
                     <input
                       name="fav_language"
@@ -913,7 +913,7 @@ const Checkout = () => {
                       button to get the details
                     </div>
                   </div>
-                ) : null}
+                ) : null} */}
                 <div className="check_ldbfd">
                   <input
                     name="agreement"

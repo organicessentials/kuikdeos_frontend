@@ -1,5 +1,7 @@
 import React from "react";
 import skin_car from "../assets/skin_car.png";
+import brain from "../assets/brain-2.png";
+
 import Frame from "../assets/Frame-83631.png";
 import Frame2 from "../assets/Frame-83641.png";
 import Frame3 from "../assets/Frame-83651.png";
@@ -10,14 +12,75 @@ import ser_4 from "../assets/ser_4.svg";
 import ser_5 from "../assets/ser_5.svg";
 import ser_6 from "../assets/ser_6.svg";
 import EastIcon from '@mui/icons-material/East';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 import "./Banner.css";
 import { Link } from "react-router-dom";
 const Banner = () => {
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,        // Enable autoplay
+    autoplaySpeed: 3000,   // Set the autoplay speed in milliseconds (e.g., 3000ms = 3 seconds)
+  }; 
   return (
     <>
+    
+     
+          
     <div className="banner_kd">
       <div className="container_banner" >
+      <Slider {...settings}>
+     <div>
+      <h2>Nootropics</h2>  
+      <div className="columns_banner"> 
+        <div className="cloumn_flex content_ban">
+            <span>Online Medical Supplies</span>
+            <h3>Nourish Your Mind: Essential Nootropic Nutrients</h3>
+            <Link to="/product-category/nootropics" className="shop_bann">Shop Now <EastIcon /></Link>
+        </div>
+        <div className="cloumn_flex content_image">
+            <img src={brain} />
+        </div>
+        <div className="cloumn_flex content_produ">
+            <div className="product_sect_ban">
+                <div className="prodct_img">
+                    <img src={Frame} />
+                </div>  
+                <div className="pr_names"> 
+                <h4><Link to="/product/modalert-200mg-tablets">Modalert 200mg</Link></h4>
+                  <span>Maximize Focus: Modalert 200mg and Nutrient Boost</span>
+                </div>
+            </div>
+            <div className="product_sect_ban">
+                <div className="prodct_img">
+                    <img src={Frame2} />
+                </div>  
+                <div className="pr_names"> 
+                <h4><Link to="/product/waklert-150mg-tablets">Waklert  150mg</Link></h4>
+                  <span>Elevate Your Potential: Boosting Vitality with Waklert 150mg</span>
+                </div>
+            </div>
+            <div className="product_sect_ban">
+                <div className="prodct_img">
+                    <img src={Frame3} />
+                </div>  
+                <div className="pr_names"> 
+                <h4><Link to="/product/artvigil-150mg-armodafinil">Artvigil 150mg</Link></h4>
+                  <span>Elevate Mind and Body with Artvigil 150mg"</span>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+      
+      <div>
       <h2>Skin Care</h2>  
       <div className="columns_banner"> 
         <div className="cloumn_flex content_ban">
@@ -58,7 +121,8 @@ const Banner = () => {
             </div>
         </div>
       </div>
-     
+      </div>
+      </Slider>
       </div>
     </div>  
     <div className="container_banner" >

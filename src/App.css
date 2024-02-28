@@ -2488,7 +2488,13 @@ h2.blog_heading {font-size: 39px;line-height: 38px;}
   margin: 0px 0 0 0 !important;
 }
 .banner_kd h2 {
-  font-size: 71px !important;
+  font-size: 63px !important;
+}
+.content_image img {
+  margin: -56px 0 0 0 !important;
+}
+.banner_kd {
+  padding: 0 0 257px 0 !important;
 }
 .collect_sec.colle_1 h2 {
   font-size: 40px !important;
