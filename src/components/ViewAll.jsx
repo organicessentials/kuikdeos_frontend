@@ -19,7 +19,12 @@ const ViewAll = () => {
             <h2>COLLECTIONS</h2>
             <span className="spn_de">Eliminate the hassle of clinic waits, pharmacy lines, and uncomfortable discussions.</span>
           </div>
+          <div className="collect_sec colle_6">
 
+<h2><Link to="/product-category/nootropics">Nootropics</Link></h2>
+<span className="spn_an"><Link to="/product-category/nootropics">SEE MORE</Link></span>
+
+</div>
 
           <div className="collect_sec colle_3">
 
@@ -40,12 +45,7 @@ const ViewAll = () => {
             <span className="spn_an"><Link to="/product-category/eye-care">SEE MORE</Link></span>
 
           </div>
-          <div className="collect_sec colle_6">
-
-            <h2><Link to="/product-category/nootropics">Nootropics</Link></h2>
-            <span className="spn_an"><Link to="/product-category/nootropics">SEE MORE</Link></span>
-
-          </div>
+        
 
           <div className="collect_sec colle_7">
 
