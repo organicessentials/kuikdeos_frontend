@@ -51,7 +51,7 @@ const ProductDetails = () => {
       }
     }
   };
-
+  console.log(product)
   const selectVariant = (e) => {
     setVarian(e.target.value);
   };
@@ -201,7 +201,7 @@ const ProductDetails = () => {
                           ))}
                       </select>
                       </div>
-                      {product.variants[0].variant === "" ? null : (
+                      {product.variants[0].variant?<>{product.variants[0].variant === "" ? null : (
                         <>
                           <hr />
                           <div className="option_co">
@@ -223,7 +223,7 @@ const ProductDetails = () => {
                           </select>
                           </div>
                         </>
-                      )}
+                      )}</>:null}
                     </div>
                   </div>
                   <div>
@@ -232,7 +232,8 @@ const ProductDetails = () => {
                     <div className="clear_button">
                       <a onClick={() => setVisibleTop(false)}>CLEAR</a>
                     </div>
-                    {product.variants[0].variant === "" ? (
+                    {product.variants[0].variant?<>
+                      {product.variants[0].variant === "" ? (
                       <div className="pro_price">
                         {!showPrice?.price
                           ? formatter.format(product.variants[0].price)
@@ -245,6 +246,11 @@ const ProductDetails = () => {
                           : formatter.format(showVariantPrice)}
                       </div>
                     )}
+                    </>: <div className="pro_price">
+                        {!showPrice?.price
+                          ? formatter.format(product.variants[0].price)
+                          : formatter.format(showPrice.price)}
+                      </div>}
 
                     {/* {visibleTop ? (
                       <div>
