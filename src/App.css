@@ -46,6 +46,9 @@ a:hover {
 .banner_kd {
     background: #e2f5fb;
 }
+select option[value='{"id":233,"name":"United States"}'] {
+    display: none !important;
+}
 .arrow-text {
   font-size: 14px;
   font-weight: 500;
